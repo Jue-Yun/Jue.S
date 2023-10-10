@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "Jues.Base.Host": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Dev"
+      }
+    }
+  }
+}
