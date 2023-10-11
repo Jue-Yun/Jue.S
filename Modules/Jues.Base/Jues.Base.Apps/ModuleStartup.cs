@@ -1,7 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Suyaa.DependencyInjection;
+using Suyaa.Hosting.Kernel.Attributes;
 using Suyaa.Hosting.Kernel.Dependency;
 using Suyaa.Hosting.Kernel.Helpers;
+
+[assembly:Module("base")]
 namespace Jues.Base.Apps
 {
     /// <summary>
@@ -14,8 +17,6 @@ namespace Jues.Base.Apps
         /// </summary>
         public void ConfigureDependency(IDependencyManager dependency)
         {
-            // 注册依赖
-            dependency.AddModulerIoc<ModuleStartup>();
             // 添加业务模块
             dependency.AddModuler<Cores.ModuleStartup>();
         }

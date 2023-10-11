@@ -6,8 +6,8 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Suyaa" Version="1.5.2310.27" />
-    <PackageReference Include="Suyaa.DependencyInjection.ServiceCollection" Version="1.9.2310.30" />
-    <PackageReference Include="Suyaa.Hosting" Version="1.9.2310.30" />
+    <PackageReference Include="Suyaa.DependencyInjection.ServiceCollection" Version="1.9.2310.32" />
+    <PackageReference Include="Suyaa.Hosting" Version="1.9.2310.36" />
     <ProjectReference Include="..\Jues.Configure\Jues.Configure.csproj" />
   </ItemGroup>
 </Project>

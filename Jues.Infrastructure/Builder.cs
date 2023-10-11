@@ -2,9 +2,37 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Suyaa;
+using Suyaa.Configure;
 using System.Diagnostics;
 namespace Jues.Infrastructure
 {
+    /// <summary>
+    /// 创建器
+    /// </summary>
+    public static class Builder
+    {
+        /// <summary>
+        /// 创建配置
+        /// </summary>
+        /// <param name="args"></param>
+        /// <param name="actionConfigurationBuilder"></param>
+        /// <returns></returns>
+        public static IConfigurationRoot CreateConfiguration(string[]? args, Action<IConfigurationBuilder>? actionConfigurationBuilder = null)
+        {
+            string key = "ASPNETCORE_ENVIRONMENT";
+            string env = Environment.GetEnvironmentVariable(key) ?? "Prod";
+            if (Environment.GetEnvironmentVariable(key).IsNullOrWhiteSpace()) Environment.SetEnvironmentVariable(key, env);
+            var builder = new ConfigurationBuilder()
+                           .SetBasePath(Directory.GetCurrentDirectory())
+                           .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                           .AddJsonFile($"appsettings.{env}.json", optional: false, reloadOnChange: true)
+                           .AddEnvironmentVariables(prefix: "ASPNETCORE_")
+                           .AddCommandLine(args);
+            if (actionConfigurationBuilder != null) actionConfigurationBuilder(builder);
+            return builder.Build();
+        }
+    }
+
     /// <summary>
     /// 构建器
     /// </summary>
@@ -13,34 +41,56 @@ namespace Jues.Infrastructure
     {
         // 入参
         private readonly string[]? _args;
+        private readonly IConfigurationRoot _configuration;
+
         /// <summary>
         /// 构建器
         /// </summary>
         /// <param name="args"></param>
-        public Builder(string[]? args)
+        public Builder(string[]? args, Action<IConfigurationBuilder>? actionConfigurationBuilder = null)
         {
             _args = args;
-        }
-        /// <summary>
-        /// 运行
-        /// </summary>
-        public void Run()
-        {
             // 注册日志
             sy.Logger.GetCurrentLogger()
                 .Use((string message) =>
                 {
                     Debug.WriteLine(message);
                 });
-            string key = "ASPNETCORE_ENVIRONMENT";
-            if (Environment.GetEnvironmentVariable(key).IsNullOrWhiteSpace()) Environment.SetEnvironmentVariable(key, "Prod");
-            var builder = new ConfigurationBuilder()
-                           .SetBasePath(Directory.GetCurrentDirectory())
-                           .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                           .AddEnvironmentVariables(prefix: "ASPNETCORE_")
-                           .AddCommandLine(_args);
-            var config = builder.Build();
-            sy.Hosting.CreateHost<T>(webBuilder => webBuilder.UseConfiguration(config), _args).Run();
+            _configuration = Builder.CreateConfiguration(_args, actionConfigurationBuilder);
+        }
+        /// <summary>
+        /// 运行
+        /// </summary>
+        public void Run()
+        {
+            sy.Hosting.CreateHost<T>(webBuilder =>
+            {
+                webBuilder.UseConfiguration(_configuration);
+            }, _args).Run();
+        }
+
+        /// <summary>
+        /// 运行
+        /// </summary>
+        public void Run(Action<IWebHostBuilder> actionBuilder)
+        {
+            sy.Hosting.CreateHost<T>(webBuilder =>
+            {
+                webBuilder.UseConfiguration(_configuration);
+                actionBuilder(webBuilder);
+            }, _args).Run();
+        }
+
+        /// <summary>
+        /// 运行
+        /// </summary>
+        public void Run(Action<IWebHostBuilder> actionBuilder, Action<IHostBuilder> actionHostBuilder)
+        {
+            sy.Hosting.CreateHost<T>(webBuilder =>
+            {
+                webBuilder.UseConfiguration(_configuration);
+                if (actionBuilder != null) actionBuilder(webBuilder);
+            }, actionHostBuilder, _args).Run();
         }
     }
 }

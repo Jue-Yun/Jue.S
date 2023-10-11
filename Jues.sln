@@ -19,6 +19,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jues.Base.Cores", "Modules\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jues.Base.Apps", "Modules\Jues.Base\Jues.Base.Apps\Jues.Base.Apps.csproj", "{1F724AC4-3D98-48B0-A607-24355BEC284B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jues.Service", "Jues.Service\Jues.Service.csproj", "{277B575E-CECD-4C4C-AEBD-8DC2F1C2ED92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jues.Kernel", "Jues.Kernel\Jues.Kernel.csproj", "{495F2D11-1457-426F-BCBE-1D55C85C583F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,14 @@ Global
 		{1F724AC4-3D98-48B0-A607-24355BEC284B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F724AC4-3D98-48B0-A607-24355BEC284B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F724AC4-3D98-48B0-A607-24355BEC284B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{277B575E-CECD-4C4C-AEBD-8DC2F1C2ED92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{277B575E-CECD-4C4C-AEBD-8DC2F1C2ED92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{277B575E-CECD-4C4C-AEBD-8DC2F1C2ED92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{277B575E-CECD-4C4C-AEBD-8DC2F1C2ED92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{495F2D11-1457-426F-BCBE-1D55C85C583F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{495F2D11-1457-426F-BCBE-1D55C85C583F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{495F2D11-1457-426F-BCBE-1D55C85C583F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{495F2D11-1457-426F-BCBE-1D55C85C583F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
