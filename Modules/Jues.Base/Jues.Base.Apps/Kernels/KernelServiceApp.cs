@@ -1,18 +1,20 @@
-﻿using Suyaa.DependencyInjection;
+﻿using Jues.Base.Cores.Kernels.Dto;
+using Suyaa.DependencyInjection;
 using Suyaa.Hosting.Kernel.Attributes;
 using Suyaa.Hosting.Kernel.Dependency;
+using Suyaa.Hosting.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jues.Base.Apps.Users
+namespace Jues.Base.Apps.Kernels
 {
     /// <summary>
-    /// 用户
+    /// 内核
     /// </summary>
-    public sealed class TestServiceApp : IServiceApp
+    public sealed class KernelServiceApp : ServiceApp
     {
 
         #region DI注入
@@ -22,7 +24,7 @@ namespace Jues.Base.Apps.Users
         /// <summary>
         /// 用户
         /// </summary>
-        public TestServiceApp(
+        public KernelServiceApp(
             IDependencyManager dependencyManager
             )
         {
@@ -31,12 +33,17 @@ namespace Jues.Base.Apps.Users
         #endregion
 
         /// <summary>
-        /// 测试接口
+        /// 获取内核信息
         /// </summary>
         /// <returns></returns>
-        public async Task Test()
+        public async Task<KernelInfoOutput> GetInfo()
         {
-            await Task.CompletedTask;
+            KernelInfoOutput output = new KernelInfoOutput()
+            {
+                Name = sy.Assembly.Name,
+                Version = sy.Assembly.Version,
+            };
+            return await Task.FromResult(output);
         }
     }
 }

@@ -2,15 +2,22 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Suyaa;
-using Suyaa.Configure;
 using System.Diagnostics;
-namespace Jues.Infrastructure
+namespace Jues.Infrastructure.Host
 {
     /// <summary>
     /// 创建器
     /// </summary>
     public static class Builder
     {
+        // 获取基目录
+        private static string GetBasePath()
+        {
+            //using var processModule = Process.GetCurrentProcess().MainModule;
+            //return Path.GetDirectoryName(processModule?.FileName) ?? string.Empty;
+            //return sy.Assembly.ExecutionDirectory;
+            return "D:\\Project.Github\\Jue-Yun\\Jue.S\\Jues.Host\\bin\\Debug\\net6.0";
+        }
         /// <summary>
         /// 创建配置
         /// </summary>
@@ -21,9 +28,11 @@ namespace Jues.Infrastructure
         {
             string key = "ASPNETCORE_ENVIRONMENT";
             string env = Environment.GetEnvironmentVariable(key) ?? "Prod";
+            if (env == "Development") env = "Dev";
             if (Environment.GetEnvironmentVariable(key).IsNullOrWhiteSpace()) Environment.SetEnvironmentVariable(key, env);
             var builder = new ConfigurationBuilder()
-                           .SetBasePath(Directory.GetCurrentDirectory())
+                           //.SetBasePath(Directory.GetCurrentDirectory())
+                           .SetBasePath(GetBasePath())
                            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                            .AddJsonFile($"appsettings.{env}.json", optional: false, reloadOnChange: true)
                            .AddEnvironmentVariables(prefix: "ASPNETCORE_")
@@ -52,7 +61,7 @@ namespace Jues.Infrastructure
             _args = args;
             // 注册日志
             sy.Logger.GetCurrentLogger()
-                .Use((string message) =>
+                .Use((message) =>
                 {
                     Debug.WriteLine(message);
                 });

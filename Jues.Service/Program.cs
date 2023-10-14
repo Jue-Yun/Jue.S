@@ -1,4 +1,4 @@
-﻿using Jues.Infrastructure;
+﻿using Jues.Infrastructure.Host;
 using Jues.Kernel;
 using Jues.Service;
 using Microsoft.AspNetCore.Builder;

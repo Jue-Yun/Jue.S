@@ -6,10 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Jues.Infrastructure;
 using Suyaa.DependencyInjection;
 using Suyaa.DependencyInjection.ServiceCollection;
 using Suyaa.Hosting.Kernel.Helpers;
+using Jues.Infrastructure.Host;
 
 namespace Jues.Kernel
 {
@@ -41,6 +41,7 @@ namespace Jues.Kernel
         /// </summary>
         protected override void OnInitialize()
         {
+            // 处理标准初始化
             base.OnInitialize();
             // 引入Base模块
             this.Import<Base.Apps.ModuleStartup>();

@@ -4,8 +4,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Suyaa.DependencyInjection.ServiceCollection;
 using Suyaa.DependencyInjection;
+using Suyaa.Hosting.Multilingual.Helpers;
+using Jues.Configure;
+using Suyaa.Hosting.Jwt.Helpers;
 
-namespace Jues.Infrastructure
+namespace Jues.Infrastructure.Host
 {
     /// <summary>
     /// 启动器
@@ -18,6 +21,30 @@ namespace Jues.Infrastructure
         /// <param name="configuration"></param>
         public StartupBase(IConfiguration configuration) : base(configuration)
         {
+            #region 初始化UUID配置
+            var uuidSection = configuration.GetSection("UUID");
+            if (uuidSection is null)
+            {
+                sy.Generator.MachineId = 1;
+                sy.Generator.AppId = 1;
+            }
+            else
+            {
+                var uuidOption = uuidSection.Get<UuidOption>();
+                sy.Generator.MachineId = uuidOption.MachineId;
+                sy.Generator.AppId = uuidOption.AppId;
+            }
+            #endregion
+
+            #region 初始化Jwt配置
+            var jwtSection = configuration.GetSection("Jwt");
+            if (jwtSection != null)
+            {
+                var jwtOption = jwtSection.Get<JwtOption>();
+                sy.Jwt.TokenName = jwtOption.Header;
+                sy.Jwt.TokenKey = jwtOption.Key;
+            }
+            #endregion
         }
         /// <summary>
         /// 依赖配置
@@ -25,6 +52,10 @@ namespace Jues.Infrastructure
         /// <param name="dependency"></param>
         protected override void OnConfigureDependency(IDependencyManager dependency)
         {
+            // 添加Jwt支持
+            dependency.AddJwt();
+            // 添加对EFCore的支持
+            dependency.AddEFCore();
         }
         /// <summary>
         /// 应用配置

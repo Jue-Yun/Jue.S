@@ -1,4 +1,4 @@
-﻿namespace Jues.Infrastructure
+﻿namespace Jues.Infrastructure.Host
 {
     /// <summary>
     /// 主机

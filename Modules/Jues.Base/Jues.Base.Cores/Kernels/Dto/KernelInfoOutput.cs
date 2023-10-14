@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jues.Base.Cores.Kernel.Dto
+namespace Jues.Base.Cores.Kernels.Dto
 {
     /// <summary>
     /// 内核信息
