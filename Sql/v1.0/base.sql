@@ -5,8 +5,8 @@ GO
 -- 创建用户信息表
 CREATE TABLE [bas].[user_info] (
     [id] varchar(32) NOT NULL,
-    [name] varchar(128) NULL,
-    [pwd] varchar(32) NULL,
+    [name] varchar(128) NOT NULL,
+    [pwd] varchar(32) NOT NULL,
     [nick] varchar(128) NULL,
     CONSTRAINT [PK_user_info] PRIMARY KEY ([id])
 );

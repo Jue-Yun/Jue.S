@@ -24,14 +24,14 @@ namespace Jues.Base.Entities.Users
         [Column("name", TypeName = "varchar(128)")]
         [StringLength(128)]
         [Description("名称")]
-        public string? Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         /// <summary>
         /// 密码
         /// </summary>
         [Column("pwd", TypeName = "varchar(32)")]
         [StringLength(32)]
         [Description("密码")]
-        public string? Pwd { get; set; }
+        public string Pwd { get; set; } = string.Empty;
         /// <summary>
         /// 昵称
         /// </summary>

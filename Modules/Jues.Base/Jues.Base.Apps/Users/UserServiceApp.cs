@@ -14,6 +14,8 @@ using Suyaa;
 using Suyaa.DependencyInjection;
 using Suyaa.Hosting.Jwt;
 using Suyaa.Hosting.Jwt.Dependency;
+using Jues.Base.Cores.Jwts;
+using Jues.Base.Cores.Jwts.Dto;
 
 namespace Jues.Base.Apps.Users
 {
@@ -27,17 +29,20 @@ namespace Jues.Base.Apps.Users
 
         private readonly IDependencyManager _dependencyManager;
         private readonly UserInfoCore _userInfoCore;
+        private readonly JwtInfoCore _jwtInfoCore;
 
         /// <summary>
         /// 用户
         /// </summary>
         public UserServiceApp(
             IDependencyManager dependencyManager,
-            UserInfoCore userInfoCore
+            UserInfoCore userInfoCore,
+            JwtInfoCore jwtInfoCore
             )
         {
             _dependencyManager = dependencyManager;
             _userInfoCore = userInfoCore;
+            _jwtInfoCore = jwtInfoCore;
         }
 
         #endregion
@@ -46,20 +51,19 @@ namespace Jues.Base.Apps.Users
         /// 用户登录
         /// </summary>
         /// <returns></returns>
-        public async Task<UserLoginOutput> Login(UserLoginInput input)
+        public async Task<JwtTokenOutput> Login(UserLoginInput input)
         {
             // 获取用户信息
             var userInfo = await _userInfoCore.GetUserInfoRequiredByName(input.UserName);
             // 检测密码是否正确
             if (userInfo.Pwd != input.Password) throw new HostFriendlyException($"密码不正确");
-            // 定义返回
-            var jwtDataProvider = _dependencyManager.Resolve<IJwtDataProvider>();
-            var jwtData = (JwtData)jwtDataProvider.CreateJwtData();
-            jwtData.Uid = userInfo.Id;
-            return new UserLoginOutput()
+            // 创建令牌
+            var jwtTokenOutput = _jwtInfoCore.CreateJwtToken(d =>
             {
-                Jwt = sy.Jwt.CreateToken(jwtData)
-            };
+                d.Uid = userInfo.Id;
+                d.Name = userInfo.Name;
+            });
+            return jwtTokenOutput;
         }
 
         /// <summary>
@@ -68,8 +72,10 @@ namespace Jues.Base.Apps.Users
         /// <returns></returns>
         public async Task SetupRootUser()
         {
-            // root用户名
+            // 定义值
             var userRoot = "root";
+            var defaultPassword = "000000";
+            var nickRoot = "超级管理员";
             // 检测root用户是否存在
             var userInfo = await _userInfoCore.GetUserInfoByName(userRoot);
             if (userInfo != null) throw new HostFriendlyException($"用户'{userRoot}'已经存在");
@@ -77,8 +83,8 @@ namespace Jues.Base.Apps.Users
             await _userInfoCore.InsertOne(new UserInfo()
             {
                 Name = userRoot,
-                Nick = "超级管理员",
-                Pwd = $"user={userRoot};pwd=000000;".GetMD5().ToLower(),
+                Nick = nickRoot,
+                Pwd = await _userInfoCore.GetPasswordString(userRoot, defaultPassword),
             });
         }
     }

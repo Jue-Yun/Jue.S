@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Suyaa.Hosting;
 using Suyaa.Hosting.Kernel;
+using Suyaa;
 
 namespace Jues.Base.Cores.Users
 {
@@ -69,6 +70,29 @@ namespace Jues.Base.Cores.Users
         }
 
         /// <summary>
+        /// 获取一个用户信息
+        /// </summary>
+        /// <returns></returns>
+        public async Task<UserInfo?> GetUserInfoById(string id)
+        {
+            var userInfo = await GetQuery()
+                .Where(d => d.Id == id)
+                .FirstOrDefaultAsync();
+            return userInfo;
+        }
+
+        /// <summary>
+        /// 获取一个用户信息
+        /// </summary>
+        /// <returns></returns>
+        public async Task<UserInfo> GetUserInfoRequiredById(string id)
+        {
+            var userInfo = await GetUserInfoById(id);
+            if (userInfo is null) throw new HostFriendlyException($"用户Id'{id}'不存在");
+            return userInfo;
+        }
+
+        /// <summary>
         /// 添加一条用户信息
         /// </summary>
         /// <param name="userInfo"></param>
@@ -78,5 +102,25 @@ namespace Jues.Base.Cores.Users
             await _userInfoRepository.InsertAsync(userInfo);
         }
 
+        /// <summary>
+        /// 更新一条用户信息
+        /// </summary>
+        /// <param name="userInfo"></param>
+        /// <returns></returns>
+        public async Task UpdateOne(UserInfo userInfo)
+        {
+            await _userInfoRepository.UpdateAsync(userInfo);
+        }
+
+        /// <summary>
+        /// 获取密码加密字符串
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public async Task<string> GetPasswordString(string userName, string password)
+        {
+            return await Task.FromResult($"user={userName};pwd={password};".GetMD5().ToLower());
+        }
     }
 }

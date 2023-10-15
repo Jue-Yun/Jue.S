@@ -7,6 +7,7 @@ using Suyaa.DependencyInjection;
 using Suyaa.Hosting.Multilingual.Helpers;
 using Jues.Configure;
 using Suyaa.Hosting.Jwt.Helpers;
+using Jues.Infrastructure.Jwt;
 
 namespace Jues.Infrastructure.Host
 {
@@ -53,7 +54,7 @@ namespace Jues.Infrastructure.Host
         protected override void OnConfigureDependency(IDependencyManager dependency)
         {
             // 添加Jwt支持
-            dependency.AddJwt();
+            dependency.AddJwt<JuesJwtDataProvider>();
             // 添加对EFCore的支持
             dependency.AddEFCore();
         }
