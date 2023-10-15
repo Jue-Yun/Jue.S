@@ -16,6 +16,7 @@ using Suyaa.Hosting.Jwt;
 using Suyaa.Hosting.Jwt.Dependency;
 using Jues.Base.Cores.Jwts;
 using Jues.Base.Cores.Jwts.Dto;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Jues.Base.Apps.Users
 {
@@ -51,7 +52,7 @@ namespace Jues.Base.Apps.Users
         /// 用户登录
         /// </summary>
         /// <returns></returns>
-        public async Task<JwtTokenOutput> Login(UserLoginInput input)
+        public async Task<JwtTokenOutput> Login([FromBody] UserLoginInput input)
         {
             // 获取用户信息
             var userInfo = await _userInfoCore.GetUserInfoRequiredByName(input.UserName);
