@@ -1,0 +1,5 @@
+{
+    "host": "http://127.0.0.1:6601",
+    "host_locle": "http://127.0.0.1:6601",
+    "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOYW1lIjoicm9vdCIsIlVpZCI6IjAxOGIzMzJkOGQ0ODAwMDAwMTAwMGEwMDBiNmM2NTVmIiwiVGVuYW50SWQiOiIwIiwibmJmIjoxNjk3Njc1NDM4LCJleHAiOjE2OTc3NjE4MzgsImlhdCI6MTY5NzY3NTQzOH0.kan9QLCez0Cr0ivQgbEdde7erDRDA5oq9NSL1molyio"
+}

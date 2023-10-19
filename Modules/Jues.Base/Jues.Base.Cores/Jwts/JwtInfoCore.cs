@@ -17,19 +17,18 @@ namespace Jues.Base.Cores.Jwts
     /// </summary>
     public class JwtInfoCore : ServiceCore
     {
-
         #region DI注入
 
-        private readonly IJwtDataProvider _jwtDataProvider;
+        private readonly JuesJwtManager _juesJwtManager;
 
         /// <summary>
         /// Jwt信息
         /// </summary>
         public JwtInfoCore(
-            IJwtDataProvider jwtDataProvider
+            JuesJwtManager juesJwtManager
             )
         {
-            _jwtDataProvider = jwtDataProvider;
+            _juesJwtManager = juesJwtManager;
         }
 
         #endregion
@@ -41,10 +40,10 @@ namespace Jues.Base.Cores.Jwts
         /// <returns></returns>
         public JwtTokenOutput CreateJwtToken(Action<JuesJwtData> jwtDataAction)
         {
-            var jwtData = (JuesJwtData)_jwtDataProvider.CreateJwtData();
+            var jwtData = _juesJwtManager.Provider.CreateJwtData();
             jwtDataAction(jwtData);
             //jwtData.Uid = userInfo.Id;
-            var jwtToken = sy.Jwt.CreateToken(jwtData);
+            var jwtToken = _juesJwtManager.Provider.Builder.CreateToken(jwtData);
             return new JwtTokenOutput()
             {
                 Token = jwtToken.Token,

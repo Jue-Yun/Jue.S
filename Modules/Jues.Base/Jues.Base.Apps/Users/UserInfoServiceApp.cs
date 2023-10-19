@@ -17,22 +17,21 @@ using Suyaa.Hosting.Jwt.Dependency;
 using Suyaa.Hosting.Jwt.Attributes;
 using Jues.Base.Cores.Jwts.Dto;
 using Jues.Base.Cores.Jwts;
-using Jues.Base.Entities.Migrations;
 using Jues.Infrastructure.Helpers;
+using Jues.Infrastructure.Jwt;
 
 namespace Jues.Base.Apps.Users
 {
     /// <summary>
     /// 用户
     /// </summary>
-    [JwtAuthorize]
+    [JuesJwtAuthorize]
     public sealed class UserInfoServiceApp : IServiceApp
     {
 
         #region DI注入
 
         private readonly IDependencyManager _dependencyManager;
-        private readonly IJwtManager _jwtManager;
         private readonly ISession _session;
         private readonly UserInfoCore _userInfoCore;
         private readonly JwtInfoCore _jwtInfoCore;
@@ -42,14 +41,12 @@ namespace Jues.Base.Apps.Users
         /// </summary>
         public UserInfoServiceApp(
             IDependencyManager dependencyManager,
-            IJwtManager jwtManager,
             ISession session,
             UserInfoCore userInfoCore,
             JwtInfoCore jwtInfoCore
             )
         {
             _dependencyManager = dependencyManager;
-            _jwtManager = jwtManager;
             _session = session;
             _userInfoCore = userInfoCore;
             _jwtInfoCore = jwtInfoCore;

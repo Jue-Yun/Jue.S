@@ -1,0 +1,12 @@
+{
+    "Variables": "../variables.json",
+    "Url":"${host}/run",
+    "Method":"POST",
+    "Headers":{
+        "Content-Type":"application/json"
+    },
+    "Cookies":{
+        "cmes_uat_info":"${cmes_uat_info}"
+    },
+    "Data":"{\"jobId\": 192, \"executorHandler\": \"TaskBopQueueJobHandler\", \"executorParams\": \"{}\", \"executorBlockStrategy\": \"COVER_EARLY\", \"executorTimeout\": 0, \"logId\": 1, \"logDateTime\": 1586629003729, \"glueType\": \"BEAN\", \"glueSource\": \"xxx\", \"glueUpdatetime\": 1586629003727, \"broadcastIndex\": 0, \"broadcastTotal\": 0 }"
+}

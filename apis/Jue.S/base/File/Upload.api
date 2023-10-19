@@ -1,0 +1,17 @@
+{
+    "Variables": "../../variables.json",
+    "Url": "${host}/app/base/File/Upload",
+    "Method": "POST",
+    "Headers": {
+        "Content-Type": "application/json",
+        "Jwt-Token": "${jwt}"
+    },
+    "Cookies": {},
+    "Query": {
+        "key": "ProdTaskContainerProduce",
+        "id": "TI_3a0dde0ed8510abfdf2f58b0bc58fe5dBT_CMES_UNIT_SERIALNO_TYPE_GWTM"
+    },
+    "Form": {},
+    "Data": "",
+    "Exit": true
+}

@@ -8,6 +8,8 @@ using Suyaa.Hosting.Multilingual.Helpers;
 using Jues.Configure;
 using Suyaa.Hosting.Jwt.Helpers;
 using Jues.Infrastructure.Jwt;
+using Jues.Infrastructure.Helpers;
+using Suyaa.Hosting.AutoMapper.Helpers;
 
 namespace Jues.Infrastructure.Host
 {
@@ -16,6 +18,10 @@ namespace Jues.Infrastructure.Host
     /// </summary>
     public abstract class StartupBase : Suyaa.Hosting.HostStartupBase
     {
+        // 上传配置
+        private readonly StorageOption? _storageOption;
+        private readonly JwtOption? _jwtOption;
+
         /// <summary>
         /// 启动器
         /// </summary>
@@ -36,17 +42,22 @@ namespace Jues.Infrastructure.Host
                 sy.Generator.AppId = uuidOption.AppId;
             }
             #endregion
-
             #region 初始化Jwt配置
             var jwtSection = configuration.GetSection("Jwt");
             if (jwtSection != null)
             {
-                var jwtOption = jwtSection.Get<JwtOption>();
-                sy.Jwt.TokenName = jwtOption.Header;
-                sy.Jwt.TokenKey = jwtOption.Key;
+                _jwtOption = jwtSection.Get<JwtOption>();
+            }
+            #endregion
+            #region 初始化上传配置
+            var storageSection = configuration.GetSection("Storage");
+            if (storageSection != null)
+            {
+                _storageOption = storageSection.Get<StorageOption>();
             }
             #endregion
         }
+
         /// <summary>
         /// 依赖配置
         /// </summary>
@@ -54,9 +65,13 @@ namespace Jues.Infrastructure.Host
         protected override void OnConfigureDependency(IDependencyManager dependency)
         {
             // 添加Jwt支持
-            dependency.AddJwt<JuesJwtDataProvider>();
+            dependency.AddJuesJwt(_jwtOption);
             // 添加对EFCore的支持
             dependency.AddEFCore();
+            // 添加上传调用器
+            dependency.AddFileStorage(_storageOption);
+            // 添加AutoMapper支持
+            dependency.AddAutoMapper();
         }
         /// <summary>
         /// 应用配置

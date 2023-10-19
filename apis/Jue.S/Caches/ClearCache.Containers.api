@@ -1,0 +1,17 @@
+{
+    "Variables": "../variables.json",
+    "Url": "${host}/api/services/bas/Cache/ClearCache",
+    "Method": "Get",
+    "Headers": {
+        "Content-Type": "application/json"
+    },
+    "Cookies": {
+        "cmes_uat_info": "${cmes_uat_info}"
+    },
+    "Query": {
+        "key": "Containers",
+        "id": ""
+    },
+    "Data": "",
+    "Exit": true
+}

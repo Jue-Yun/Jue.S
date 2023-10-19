@@ -13,10 +13,14 @@ namespace Jues.Infrastructure.Host
         // 获取基目录
         private static string GetBasePath()
         {
-            //using var processModule = Process.GetCurrentProcess().MainModule;
+            using var processModule = Process.GetCurrentProcess().MainModule;
+            var filePath = typeof(Builder).Assembly.Location;
+            var folder = sy.IO.GetFolderPath(filePath);
             //return Path.GetDirectoryName(processModule?.FileName) ?? string.Empty;
             //return sy.Assembly.ExecutionDirectory;
-            return "D:\\Project.Github\\Jue-Yun\\Jue.S\\Jues.Host\\bin\\Debug\\net6.0";
+            //string path = "D:\\Project.Github\\Jue-Yun\\Jue.S\\Jues.Host\\bin\\Debug\\net6.0";
+            //Console.WriteLine(type.Assembly);
+            return folder;
         }
         /// <summary>
         /// 创建配置

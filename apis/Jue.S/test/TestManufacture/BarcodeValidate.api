@@ -1,0 +1,16 @@
+{
+    "Variables": "../../variables.json",
+    "Url": "${host}/api/services/test/TestManufacture/BarcodeValidate",
+    "Method": "POST",
+    "Headers": {
+        "Content-Type": "application/json"
+    },
+    "Cookies": {
+        "cmes_uat_info": "${cmes_uat_info}"
+    },
+    "Data": {
+        "scanBarcode": "AAQQQ1111",
+        "workOperationCode": "ZS120"
+    },
+    "Exit": true
+}

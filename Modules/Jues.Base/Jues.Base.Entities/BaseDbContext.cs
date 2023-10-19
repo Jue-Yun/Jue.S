@@ -1,4 +1,5 @@
-﻿using Jues.Base.Entities.Users;
+﻿using Jues.Base.Entities.Files;
+using Jues.Base.Entities.Users;
 using Jues.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
@@ -22,6 +23,13 @@ namespace Jues.Base.Entities
         /// 用户信息
         /// </summary>
         public DbSet<UserInfo> UserInfos { get; set; }
+        #endregion
+
+        #region 文件模块
+        /// <summary>
+        /// 用户信息
+        /// </summary>
+        public DbSet<FileStorage> FileStorages { get; set; }
         #endregion
 
         /// <summary>

@@ -1,0 +1,27 @@
+{
+    "Variables": "../../variables.json",
+    "Url": "${host}/api/services/mf/RadiumCarving/GenerateContainers",
+    "Method": "POST",
+    "Headers": {
+        "Content-Type": "application/json"
+    },
+    "Cookies": {
+        "cmes_uat_info": "${cmes_uat_info}"
+    },
+    "Data": {
+        "machineCode": "RC01000978",
+        "taskList": [
+            {
+                "taskOrderNo": "WO2023081115000410",
+                "puzzleNo": 0,
+                "whetherForkPlate": 0
+            },
+            {
+                "taskOrderNo": "WO2023081115000410",
+                "puzzleNo": 1,
+                "whetherForkPlate": 0
+            }
+        ]
+    },
+    "Exit": true
+}

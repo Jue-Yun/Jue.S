@@ -24,14 +24,14 @@ namespace Jues.Base.Apps.Jwts
     /// <summary>
     /// 用户
     /// </summary>
-    [JwtAuthorize]
+    [JuesJwtAuthorize]
     public sealed class JwtServiceApp : IServiceApp
     {
 
         #region DI注入
 
         private readonly IDependencyManager _dependencyManager;
-        private readonly IJwtManager _jwtManager;
+        private readonly JuesJwtManager _juesJwtManager;
         private readonly JwtInfoCore _jwtInfoCore;
 
         /// <summary>
@@ -39,12 +39,12 @@ namespace Jues.Base.Apps.Jwts
         /// </summary>
         public JwtServiceApp(
             IDependencyManager dependencyManager,
-            IJwtManager jwtManager,
+            JuesJwtManager juesJwtManager,
             JwtInfoCore jwtInfoCore
             )
         {
             _dependencyManager = dependencyManager;
-            _jwtManager = jwtManager;
+            _juesJwtManager = juesJwtManager;
             _jwtInfoCore = jwtInfoCore;
         }
 
@@ -56,7 +56,7 @@ namespace Jues.Base.Apps.Jwts
         /// <returns></returns>
         public async Task<JuesJwtData> GetJwtData()
         {
-            var jwtData = (JuesJwtData)_jwtManager.GetCurrentData();
+            var jwtData = _juesJwtManager.GetCurrentData();
             return await Task.FromResult(jwtData);
         }
 
@@ -66,7 +66,7 @@ namespace Jues.Base.Apps.Jwts
         /// <returns></returns>
         public async Task<JwtTokenOutput> UpdateToken()
         {
-            var jwtData = (JuesJwtData)_jwtManager.GetCurrentData();
+            var jwtData = _juesJwtManager.GetCurrentData();
             // 创建令牌
             var jwtTokenOutput = _jwtInfoCore.CreateJwtToken(d =>
             {

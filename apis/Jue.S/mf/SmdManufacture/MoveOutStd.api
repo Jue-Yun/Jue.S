@@ -1,0 +1,17 @@
+{
+    "Variables": "../../variables.json",
+    "Url": "${host}/api/services/mf/SmdManufacture/MoveOutStd",
+    "Method": "POST",
+    "Headers": {
+        "Content-Type": "application/json"
+    },
+    "Cookies": {
+        "cmes_uat_info": "${cmes_uat_info}"
+    },
+    "Data": {
+        "barcode": "RCBJ-SK23080020-0A00079",
+        "procedureCode": "SC380",
+        "taskOrderNo": "WO2023082117301011"
+    },
+    "Exit": true
+}
