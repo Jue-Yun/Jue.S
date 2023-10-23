@@ -13,11 +13,12 @@ using System.Diagnostics;
 //Jues.Infrastructure.Hosting.CreateBuilder<Jues.Kernel.KernelStartup>(args).Run(builder => { }, builder => builder.UseWindowsService());
 
 // 注册日志
-sy.Logger.GetCurrentLogger()
-    .Use((string message) =>
-    {
-        Debug.WriteLine(message);
-    });
+sy.Logger.Factory.UseStringAction(message => Debug.WriteLine(message));
+//sy.Logger.GetCurrentLogger()
+//    .Use((string message) =>
+//    {
+//        Debug.WriteLine(message);
+//    });
 
 // 服务模式处理当前目录
 if (WindowsServiceHelpers.IsWindowsService())

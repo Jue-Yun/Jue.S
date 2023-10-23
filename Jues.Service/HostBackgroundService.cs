@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ILogger = Suyaa.Logs.ILogger;
+using ILogger = Suyaa.Logs.Dependency.ILogger;
 
 namespace Jues.Service
 {

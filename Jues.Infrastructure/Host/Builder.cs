@@ -64,11 +64,12 @@ namespace Jues.Infrastructure.Host
         {
             _args = args;
             // 注册日志
-            sy.Logger.GetCurrentLogger()
-                .Use((message) =>
-                {
-                    Debug.WriteLine(message);
-                });
+            sy.Logger.Factory.UseStringAction(message => Debug.WriteLine(message));
+            //sy.Logger.GetCurrentLogger()
+            //    .Use((message) =>
+            //    {
+            //        Debug.WriteLine(message);
+            //    });
             _configuration = Builder.CreateConfiguration(_args, actionConfigurationBuilder);
         }
         /// <summary>

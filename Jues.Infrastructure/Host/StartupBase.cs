@@ -10,6 +10,7 @@ using Suyaa.Hosting.Jwt.Helpers;
 using Jues.Infrastructure.Jwt;
 using Jues.Infrastructure.Helpers;
 using Suyaa.Hosting.AutoMapper.Helpers;
+using Suyaa.Hosting.Kernel.Helpers;
 
 namespace Jues.Infrastructure.Host
 {
@@ -64,6 +65,8 @@ namespace Jues.Infrastructure.Host
         /// <param name="dependency"></param>
         protected override void OnConfigureDependency(IDependencyManager dependency)
         {
+            // 注册切片
+            dependency.AddActionFilters();
             // 添加Jwt支持
             dependency.AddJuesJwt(_jwtOption);
             // 添加对EFCore的支持
