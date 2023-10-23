@@ -5,13 +5,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Suyaa" Version="1.5.2310.29" />
-    <PackageReference Include="Suyaa.DependencyInjection.ServiceCollection" Version="1.9.2310.46" />
-    <PackageReference Include="Suyaa.EFCore.SqlServer" Version="1.5.2310.29" />
-    <PackageReference Include="Suyaa.Hosting" Version="1.9.2310.46" />
-    <PackageReference Include="Suyaa.Hosting.AutoMapper" Version="1.9.2310.46" />
-    <PackageReference Include="Suyaa.Hosting.EFCore" Version="1.9.2310.46" />
-    <PackageReference Include="Suyaa.Hosting.Jwt" Version="1.9.2310.46" />
+    <PackageReference Include="Suyaa" Version="1.5.2310.30" />
+    <PackageReference Include="Suyaa.DependencyInjection.ServiceCollection" Version="1.9.2310.47" />
+    <PackageReference Include="Suyaa.EFCore.SqlServer" Version="1.5.2310.30" />
+    <PackageReference Include="Suyaa.Hosting" Version="1.9.2310.47" />
+    <PackageReference Include="Suyaa.Hosting.AutoMapper" Version="1.9.2310.47" />
+    <PackageReference Include="Suyaa.Hosting.EFCore" Version="1.9.2310.47" />
+    <PackageReference Include="Suyaa.Hosting.Jwt" Version="1.9.2310.47" />
     <ProjectReference Include="..\Jues.Configure\Jues.Configure.csproj" />
   </ItemGroup>
 </Project>
