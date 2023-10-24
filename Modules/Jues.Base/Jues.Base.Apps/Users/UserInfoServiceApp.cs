@@ -63,7 +63,7 @@ namespace Jues.Base.Apps.Users
             // 获取用户信息
             var userInfo = await _userInfoCore.GetUserInfoRequiredById(_session.GetUid());
             // 检测密码是否正确
-            if (userInfo.Pwd != input.OldPassword) throw new HostFriendlyException($"旧密码不正确");
+            if (userInfo.Pwd != input.OldPassword) throw new UserFriendlyException($"旧密码不正确");
             // 存储新密码
             userInfo.Pwd = input.NewPassword;
             await _userInfoCore.UpdateOne(userInfo);

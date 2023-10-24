@@ -57,7 +57,7 @@ namespace Jues.Base.Apps.Users
             // 获取用户信息
             var userInfo = await _userInfoCore.GetUserInfoRequiredByName(input.UserName);
             // 检测密码是否正确
-            if (userInfo.Pwd != input.Password) throw new HostFriendlyException($"密码不正确");
+            if (userInfo.Pwd != input.Password) throw new UserFriendlyException($"密码不正确");
             // 创建令牌
             var jwtTokenOutput = _jwtInfoCore.CreateJwtToken(d =>
             {
@@ -79,7 +79,7 @@ namespace Jues.Base.Apps.Users
             var nickRoot = "超级管理员";
             // 检测root用户是否存在
             var userInfo = await _userInfoCore.GetUserInfoByName(userRoot);
-            if (userInfo != null) throw new HostFriendlyException($"用户'{userRoot}'已经存在");
+            if (userInfo != null) throw new UserFriendlyException($"用户'{userRoot}'已经存在");
             // 添加root用户信息
             await _userInfoCore.InsertOne(new UserInfo()
             {

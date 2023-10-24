@@ -66,7 +66,7 @@ namespace Jues.Base.Cores.Files
         public async Task<FileStorage> GetDataRequiredById(string id)
         {
             var data = await GetDataById(id);
-            if (data is null) throw new HostFriendlyException($"文章分类'{id}'不存在");
+            if (data is null) throw new UserFriendlyException($"文章分类'{id}'不存在");
             return data;
         }
 

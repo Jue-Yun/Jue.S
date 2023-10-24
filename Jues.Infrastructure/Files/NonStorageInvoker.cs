@@ -16,7 +16,7 @@ namespace Jues.Infrastructure.Files
     {
         public string GetMD5(string path)
         {
-            throw new HostFriendlyException($"未发现存储设备");
+            throw new UserFriendlyException($"未发现存储设备");
         }
 
         public FileStream Open(string path)
@@ -26,7 +26,7 @@ namespace Jues.Infrastructure.Files
 
         public Task WriteAsync(IFormFile file, string path)
         {
-            throw new HostFriendlyException($"未发现存储设备");
+            throw new UserFriendlyException($"未发现存储设备");
         }
     }
 }

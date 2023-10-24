@@ -22,7 +22,7 @@ namespace Jues.Infrastructure.Helpers
         /// <exception cref="HostFriendlyException"></exception>
         public static string GetUid(this ISession session)
         {
-            if (session.Uid is null) throw new HostFriendlyException($"用户登录信息获取失败");
+            if (session.Uid is null) throw new UserFriendlyException($"用户登录信息获取失败");
             return session.Uid;
         }
     }

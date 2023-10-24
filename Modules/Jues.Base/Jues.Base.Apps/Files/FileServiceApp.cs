@@ -57,7 +57,7 @@ namespace Jues.Base.Apps.Files
         /// <returns></returns>
         public async Task<FileStorageOutput> Upload(IFormFile? file)
         {
-            if (file is null) throw new HostFriendlyException($"未发现上传文件");
+            if (file is null) throw new UserFriendlyException($"未发现上传文件");
             // 获取当前时间
             var now = sy.Time.Now;
             FileStorage fileStorage = new FileStorage()
@@ -84,7 +84,7 @@ namespace Jues.Base.Apps.Files
         /// <returns></returns>
         public async Task<List<FileStorageOutput>> UploadList([FromForm] IFormFileCollection files)
         {
-            if (!files.Any()) throw new HostFriendlyException($"未发现上传文件");
+            if (!files.Any()) throw new UserFriendlyException($"未发现上传文件");
             List<FileStorageOutput> list = new List<FileStorageOutput>();
             foreach (var file in files)
             {

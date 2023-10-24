@@ -65,7 +65,7 @@ namespace Jues.Base.Cores.Users
         public async Task<UserInfo> GetUserInfoRequiredByName(string userName)
         {
             var userInfo = await GetUserInfoByName(userName);
-            if (userInfo is null) throw new HostFriendlyException($"用户名'{userName}'不存在");
+            if (userInfo is null) throw new UserFriendlyException($"用户名'{userName}'不存在");
             return userInfo;
         }
 
@@ -88,7 +88,7 @@ namespace Jues.Base.Cores.Users
         public async Task<UserInfo> GetUserInfoRequiredById(string id)
         {
             var userInfo = await GetUserInfoById(id);
-            if (userInfo is null) throw new HostFriendlyException($"用户Id'{id}'不存在");
+            if (userInfo is null) throw new UserFriendlyException($"用户Id'{id}'不存在");
             return userInfo;
         }
 
