@@ -11,6 +11,7 @@ using Jues.Infrastructure.Jwt;
 using Jues.Infrastructure.Helpers;
 using Suyaa.Hosting.AutoMapper.Helpers;
 using Suyaa.Hosting.Kernel.Helpers;
+using Suyaa.Hosting.EFCore.Helpers;
 
 namespace Jues.Infrastructure.Host
 {
