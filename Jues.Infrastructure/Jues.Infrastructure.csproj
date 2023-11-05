@@ -7,12 +7,12 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Suyaa" Version="1.5.2310.31" />
-    <PackageReference Include="Suyaa.DependencyInjection.ServiceCollection" Version="1.9.2310.52" />
+    <PackageReference Include="Suyaa.DependencyInjection.ServiceCollection" Version="1.9.2310.53" />
     <PackageReference Include="Suyaa.EFCore.SqlServer" Version="1.5.2310.31" />
-    <PackageReference Include="Suyaa.Hosting" Version="1.9.2310.52" />
-    <PackageReference Include="Suyaa.Hosting.AutoMapper" Version="1.9.2310.52" />
-    <PackageReference Include="Suyaa.Hosting.EFCore" Version="1.9.2310.52" />
-    <PackageReference Include="Suyaa.Hosting.Jwt" Version="1.9.2310.52" />
+    <PackageReference Include="Suyaa.Hosting" Version="1.9.2310.53" />
+    <PackageReference Include="Suyaa.Hosting.AutoMapper" Version="1.9.2310.53" />
+    <PackageReference Include="Suyaa.Hosting.EFCore" Version="1.9.2310.53" />
+    <PackageReference Include="Suyaa.Hosting.Jwt" Version="1.9.2310.53" />
     <ProjectReference Include="..\Jues.Configure\Jues.Configure.csproj" />
   </ItemGroup>
 </Project>
