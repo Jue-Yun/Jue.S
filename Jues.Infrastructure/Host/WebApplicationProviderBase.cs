@@ -110,12 +110,12 @@ namespace Jues.Infrastructure.Host
         protected override void OnConfigureDependency(IDependencyManager dependency)
         {
             base.OnConfigureDependency(dependency);
-            // 注册切片
-            dependency.AddActionFilters();
             // 添加Jwt支持
             dependency.AddJuesJwt(_jwtOption);
             // 添加对EFCore的支持
             dependency.AddEFCore();
+            // 注册切片
+            dependency.AddActionFilters();
             // 添加上传调用器
             dependency.AddFileStorage(_storageOption);
             // 添加AutoMapper支持

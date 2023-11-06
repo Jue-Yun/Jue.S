@@ -49,7 +49,7 @@ namespace Jues.Infrastructure.Helpers
         /// 添加自定义Jwt支持
         /// </summary>
         /// <param name="dependency"></param>
-        /// <param name="option"></param>
+        /// <param name="jwtOption"></param>
         /// <returns></returns>
         public static IDependencyManager AddJuesJwt(this IDependencyManager dependency, Configure.JwtOption? jwtOption)
         {

@@ -13,6 +13,10 @@ namespace Jues.Infrastructure.EFCore
     /// </summary>
     public class DefaultContextBase : Suyaa.EFCore.SqlServer.SqlServerContext
     {
+        /// <summary>
+        /// 默认数据库连接上下文
+        /// </summary>
+        /// <param name="descriptorFactory"></param>
         public DefaultContextBase(IDbConnectionDescriptorFactory descriptorFactory) : base(descriptorFactory.DefaultConnection)
         {
         }

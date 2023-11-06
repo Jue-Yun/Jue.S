@@ -14,6 +14,8 @@ namespace Jues.Base.Entities
         /// </summary>
         public void ConfigureDependency(IDependencyManager dependency)
         {
+            // 引入程序集
+            dependency.Include<ModuleStartup>();
             // 注册依赖
             dependency.AddModulerIoc<ModuleStartup>();
         }
