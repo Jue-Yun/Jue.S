@@ -22,7 +22,7 @@ namespace Jues.Infrastructure.Host
     /// <summary>
     /// 基础Jues应用供应商
     /// </summary>
-    public abstract class WebApplicationProviderBase : WebAppliactionProvider
+    public abstract class WebApplicationProviderBase : HostAppliactionProvider
     {
         // 上传配置
         private StorageOption? _storageOption;
