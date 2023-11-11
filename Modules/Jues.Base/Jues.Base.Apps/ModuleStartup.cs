@@ -17,6 +17,8 @@ namespace Jues.Base.Apps
         /// </summary>
         public void ConfigureDependency(IDependencyManager dependency)
         {
+            // 引入程序集
+            dependency.Include<ModuleStartup>();
             // 添加业务模块
             dependency.AddModuler<Cores.ModuleStartup>();
         }

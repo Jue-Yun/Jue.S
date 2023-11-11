@@ -14,6 +14,8 @@ namespace Jues.Base.Cores
         /// </summary>
         public void ConfigureDependency(IDependencyManager dependency)
         {
+            // 引入程序集
+            dependency.Include<ModuleStartup>();
             // 注册依赖
             dependency.AddModulerIoc<ModuleStartup>();
             // 添加实例模块
