@@ -1,10 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Suyaa.DependencyInjection;
-using Suyaa.Hosting.Kernel.Attributes;
-using Suyaa.Hosting.Kernel.Dependency;
-using Suyaa.Hosting.Kernel.Helpers;
+﻿using Suyaa.Hosting.Common.Attributes;
+using Suyaa.Hosting.Common.DependencyInjection.Dependency;
+using Suyaa.Hosting.Common.DependencyInjection.Helpers;
+using Suyaa.Hosting.Common.Modules.Dependency;
+using Suyaa.Hosting.Common.Modules.Helpers;
 
-[assembly:Module("base")]
+[assembly: Module("base")]
 namespace Jues.Base.Apps
 {
     /// <summary>

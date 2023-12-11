@@ -1,13 +1,7 @@
-﻿using Jues.Infrastructure.Entities;
-using Suyaa.Hosting.Data.Entities;
-using System;
-using System.Collections.Generic;
+﻿using Suyaa.Data.Entities;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Jues.Base.Entities.Users
 {
@@ -16,7 +10,7 @@ namespace Jues.Base.Entities.Users
     /// </summary>
     [Table("user_info", Schema = "bas")]
     [Description("用户信息")]
-    public sealed class UserInfo : UUIDEntity
+    public sealed class UserInfo : UUIDKeyEntity
     {
         /// <summary>
         /// 名称

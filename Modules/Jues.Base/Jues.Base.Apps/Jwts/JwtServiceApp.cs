@@ -1,23 +1,8 @@
-﻿using Jues.Base.Cores.Users;
-using Jues.Base.Cores.Users.Dto;
-using Jues.Base.Entities.Users;
-using Suyaa.Hosting.Kernel.Attributes;
-using Suyaa.Hosting.Kernel.Dependency;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Suyaa.Hosting;
-using Suyaa.Hosting.Kernel;
-using Suyaa;
-using Suyaa.DependencyInjection;
-using Suyaa.Hosting.Jwt;
-using Suyaa.Hosting.Jwt.Dependency;
-using Suyaa.Hosting.Jwt.Attributes;
-using Jues.Base.Cores.Jwts.Dto;
+﻿using Jues.Base.Cores.Jwts.Dto;
 using Jues.Base.Cores.Jwts;
 using Jues.Infrastructure.Jwt;
+using Suyaa.Hosting.App.Services;
+using Suyaa.Hosting.Common.DependencyInjection.Dependency;
 
 namespace Jues.Base.Apps.Jwts
 {
@@ -25,7 +10,7 @@ namespace Jues.Base.Apps.Jwts
     /// 用户
     /// </summary>
     [JuesJwtAuthorize]
-    public sealed class JwtServiceApp : IServiceApp
+    public sealed class JwtServiceApp : DomainServiceApp
     {
 
         #region DI注入

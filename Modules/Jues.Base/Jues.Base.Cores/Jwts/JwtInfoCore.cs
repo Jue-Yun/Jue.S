@@ -1,21 +1,13 @@
 ﻿using Jues.Base.Cores.Jwts.Dto;
-using Jues.Base.Entities.Users;
 using Jues.Infrastructure.Jwt;
-using Suyaa.Hosting.Jwt;
-using Suyaa.Hosting.Jwt.Dependency;
-using Suyaa.Hosting.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Suyaa.Hosting.Core.Services;
 
 namespace Jues.Base.Cores.Jwts
 {
     /// <summary>
     /// Jwt信息
     /// </summary>
-    public class JwtInfoCore : ServiceCore
+    public class JwtInfoCore : DomainServiceCore
     {
         #region DI注入
 

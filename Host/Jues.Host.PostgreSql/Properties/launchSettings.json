@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Jues.Host.PostgreSql": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Dev"
+      }
+    }
+  }
+}

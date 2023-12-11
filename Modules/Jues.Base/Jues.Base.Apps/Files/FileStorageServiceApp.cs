@@ -5,24 +5,17 @@ using Jues.Infrastructure.Files;
 using Jues.Infrastructure.Jwt;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Suyaa.DependencyInjection;
-using Suyaa.Hosting.Jwt.Attributes;
-using Suyaa.Hosting.Jwt.Dependency;
-using Suyaa.Hosting.Kernel.Attributes;
-using Suyaa.Hosting.Services;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+using Suyaa.Hosting.App.Services;
+using Suyaa.Hosting.Common.Attributes;
+using Suyaa.Hosting.Common.DependencyInjection.Dependency;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Jues.Base.Apps.Files
 {
     /// <summary>
     /// 文件存储
     /// </summary>
-    public sealed class FileStorageServiceApp : ServiceApp
+    public sealed class FileStorageServiceApp : DomainServiceApp
     {
         #region DI注入
 
@@ -78,8 +71,8 @@ namespace Jues.Base.Apps.Files
                 string encodeFilename = System.Web.HttpUtility.UrlEncode(data.Name, Encoding.GetEncoding("UTF-8"));
                 // 添加头部信息
                 respose.Headers.ContentLength = fs.Length;
-                respose.Headers.Add("Access-Control-Expose-Headers", "*");
-                respose.Headers.Add("Content-Disposition", "attachment; filename=" + encodeFilename);
+                respose.Headers.Append("Access-Control-Expose-Headers", "*");
+                respose.Headers.Append("Content-Disposition", "attachment; filename=" + encodeFilename);
                 // 返回文件流
                 return new FileStreamResult(fs, data.MimeType);
             }

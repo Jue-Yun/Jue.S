@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Suyaa" Version="1.7.2312.35" />
+    <PackageReference Include="Suyaa.Hosting" Version="1.11.2312.59" />
+    <PackageReference Include="Suyaa.Hosting.AutoMapper" Version="1.11.2312.61" />
+    <PackageReference Include="Suyaa.Hosting.Jwt" Version="1.11.2312.61" />
+    <PackageReference Include="Suyaa.Hosting.UnitOfWork.EfCore" Version="1.11.2312.61" />
+  </ItemGroup>
+</Project>

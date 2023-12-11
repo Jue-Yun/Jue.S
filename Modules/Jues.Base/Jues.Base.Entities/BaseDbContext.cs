@@ -16,7 +16,7 @@ namespace Jues.Base.Entities
     /// <summary>
     /// 基础模块数据库上下文
     /// </summary>
-    public class BaseDbContext : DefaultContextBase
+    public class BaseDbContext : BasicDbContext
     {
         #region 用户模块
         /// <summary>
@@ -31,13 +31,5 @@ namespace Jues.Base.Entities
         /// </summary>
         public DbSet<FileStorage> FileStorages { get; set; }
         #endregion
-
-        /// <summary>
-        /// 基础模块数据库上下文
-        /// </summary>
-        /// <param name="dbConnectionDescriptorFactory"></param>
-        public BaseDbContext(IDbConnectionDescriptorFactory dbConnectionDescriptorFactory) : base(dbConnectionDescriptorFactory)
-        {
-        }
     }
 }

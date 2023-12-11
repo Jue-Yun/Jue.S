@@ -1,24 +1,13 @@
-﻿using Jues.Base.Cores.Jwts;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Suyaa.DependencyInjection;
-using Suyaa.Hosting.Jwt.Attributes;
-using Suyaa.Hosting.Jwt.Dependency;
-using Suyaa.Hosting.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Suyaa.Hosting;
-using Suyaa.Hosting.Kernel;
-using Jues.Infrastructure.Helpers;
 using Jues.Infrastructure.Jwt;
 using Jues.Infrastructure.Files;
 using Jues.Base.Entities.Files;
 using Jues.Base.Cores.Files.Dto;
 using Jues.Base.Cores.Files;
-using Suyaa.Hosting.Kernel.Dependency;
+using Suyaa.Hosting.App.Services;
+using Suyaa.Hosting.Common.Exceptions;
+using Suyaa.Hosting.AutoMapper.Dependency;
 
 namespace Jues.Base.Apps.Files
 {
@@ -26,7 +15,7 @@ namespace Jues.Base.Apps.Files
     /// 文件
     /// </summary>
     [JuesJwtAuthorize]
-    public sealed class FileServiceApp : ServiceApp
+    public sealed class FileServiceApp : DomainServiceApp
     {
         #region DI注入
 

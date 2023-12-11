@@ -1,4 +1,5 @@
 ﻿using Jues.Infrastructure.EFCore;
+using Suyaa.Data.Dependency;
 using Suyaa.Hosting.EFCore.Dependency;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace Jues.Base.Entities
     /// <summary>
     /// 数据库工厂
     /// </summary>
-    public class BaseDbContextFactory : DbContextFactoryBase<BaseDbContext>
+    public class BaseDbContextFactory : DesignTimeDbContextFactory<BaseDbContext>
     {
         /// <summary>
         /// 创建数据库上下文
@@ -20,7 +21,7 @@ namespace Jues.Base.Entities
         /// <returns></returns>
         public override BaseDbContext CreateDbContext(IDbConnectionDescriptorFactory dbConnectionDescriptorFactory)
         {
-            return new BaseDbContext(dbConnectionDescriptorFactory);
+            return new BaseDbContext();
         }
     }
 }

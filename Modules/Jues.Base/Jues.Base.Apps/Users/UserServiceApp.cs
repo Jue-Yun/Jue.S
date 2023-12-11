@@ -1,29 +1,19 @@
 ﻿using Jues.Base.Cores.Users;
 using Jues.Base.Cores.Users.Dto;
 using Jues.Base.Entities.Users;
-using Suyaa.Hosting.Kernel.Attributes;
-using Suyaa.Hosting.Kernel.Dependency;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Suyaa.Hosting;
-using Suyaa.Hosting.Kernel;
-using Suyaa;
-using Suyaa.DependencyInjection;
-using Suyaa.Hosting.Jwt;
-using Suyaa.Hosting.Jwt.Dependency;
 using Jues.Base.Cores.Jwts;
 using Jues.Base.Cores.Jwts.Dto;
 using Microsoft.AspNetCore.Mvc;
+using Suyaa.Hosting.App.Services;
+using Suyaa.Hosting.Common.Exceptions;
+using Suyaa.Hosting.Common.DependencyInjection.Dependency;
 
 namespace Jues.Base.Apps.Users
 {
     /// <summary>
     /// 用户
     /// </summary>
-    public sealed class UserServiceApp : IServiceApp
+    public sealed class UserServiceApp : DomainServiceApp
     {
 
         #region DI注入
@@ -52,7 +42,7 @@ namespace Jues.Base.Apps.Users
         /// 用户登录
         /// </summary>
         /// <returns></returns>
-        public async Task<JwtTokenOutput> Login([FromBody] UserLoginInput input)
+        public async Task<JwtTokenOutput> Login(UserLoginInput input)
         {
             // 获取用户信息
             var userInfo = await _userInfoCore.GetUserInfoRequiredByName(input.UserName);

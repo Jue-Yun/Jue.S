@@ -1,24 +1,17 @@
-﻿using Jues.Base.Cores.Users.Dto;
-using Jues.Base.Entities.Users;
+﻿using Jues.Base.Entities.Users;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
-using Suyaa.Hosting.Data.Dependency;
-using Suyaa.Hosting.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Suyaa.Hosting;
-using Suyaa.Hosting.Kernel;
 using Suyaa;
+using Suyaa.Data.Dependency;
+using Suyaa.Data.Helpers;
+using Suyaa.Hosting.Common.Exceptions;
+using Suyaa.Hosting.Core.Services;
 
 namespace Jues.Base.Cores.Users
 {
     /// <summary>
     /// 系统用户
     /// </summary>
-    public sealed class UserInfoCore : ServiceCore
+    public sealed class UserInfoCore : DomainServiceCore
     {
 
         #region DI注入

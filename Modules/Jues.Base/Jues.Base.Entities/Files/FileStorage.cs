@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Jues.Infrastructure.Entities;
 using System.ComponentModel.DataAnnotations;
+using Suyaa.Data.Entities;
+using Suyaa.Hosting.Data.Entities;
 
 namespace Jues.Base.Entities.Files
 {
@@ -15,7 +11,7 @@ namespace Jues.Base.Entities.Files
     /// </summary>
     [Table("file_storage", Schema = "bas")]
     [Description("文件存储信息")]
-    public sealed class FileStorage : UUIDEntity
+    public sealed class FileStorage : NonModifiableEntity
     {
         /// <summary>
         /// 文件名

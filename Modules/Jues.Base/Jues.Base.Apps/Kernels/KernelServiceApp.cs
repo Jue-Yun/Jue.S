@@ -1,20 +1,13 @@
 ﻿using Jues.Base.Cores.Kernels.Dto;
-using Suyaa.DependencyInjection;
-using Suyaa.Hosting.Kernel.Attributes;
-using Suyaa.Hosting.Kernel.Dependency;
-using Suyaa.Hosting.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Suyaa.Hosting.App.Services;
+using Suyaa.Hosting.Common.DependencyInjection.Dependency;
 
 namespace Jues.Base.Apps.Kernels
 {
     /// <summary>
     /// 内核
     /// </summary>
-    public sealed class KernelServiceApp : ServiceApp
+    public sealed class KernelServiceApp : DomainServiceApp
     {
 
         #region DI注入

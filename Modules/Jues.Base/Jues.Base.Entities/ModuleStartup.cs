@@ -1,7 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Suyaa.DependencyInjection;
-using Suyaa.Hosting.Kernel.Dependency;
-using Suyaa.Hosting.Kernel.Helpers;
+﻿using Suyaa.Hosting.Common.DependencyInjection.Dependency;
+using Suyaa.Hosting.Common.DependencyInjection.Helpers;
+using Suyaa.Hosting.Common.Modules.Dependency;
+using Suyaa.Hosting.Core.Helpers;
+
 namespace Jues.Base.Entities
 {
     /// <summary>
@@ -17,7 +18,7 @@ namespace Jues.Base.Entities
             // 引入程序集
             dependency.Include<ModuleStartup>();
             // 注册依赖
-            dependency.AddModulerIoc<ModuleStartup>();
+            //dependency.AddModulerCores<ModuleStartup>();
         }
     }
 }

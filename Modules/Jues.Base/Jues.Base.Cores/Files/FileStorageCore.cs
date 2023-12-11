@@ -1,22 +1,16 @@
 ﻿using Jues.Base.Entities.Files;
 using Microsoft.EntityFrameworkCore;
-using Suyaa;
-using Suyaa.Hosting.Data.Dependency;
-using Suyaa.Hosting.Jwt.Dependency;
-using Suyaa.Hosting.Kernel;
-using Suyaa.Hosting.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Suyaa.Data.Dependency;
+using Suyaa.Data.Helpers;
+using Suyaa.Hosting.Common.Exceptions;
+using Suyaa.Hosting.Core.Services;
 
 namespace Jues.Base.Cores.Files
 {
     /// <summary>
     /// 文件存储
     /// </summary>
-    public sealed class FileStorageCore : ServiceCore
+    public sealed class FileStorageCore : DomainServiceCore
     {
         #region DI注入
 
