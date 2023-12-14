@@ -1,23 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Suyaa.Data;
-using Suyaa.Data.Dependency;
-using Suyaa.Data.Helpers;
-using Suyaa.Data.Sources;
-using Suyaa.EFCore.Contexts;
-using Suyaa.EFCore.Models;
-using Suyaa.EFCore.Sources;
+﻿using Suyaa.Data.Dependency;
 using Suyaa.Hosting.Common.DependencyInjection;
 using Suyaa.Hosting.Common.DependencyInjection.Dependency;
 using Suyaa.Hosting.Common.DependencyInjection.Helpers;
 using Suyaa.Hosting.EfCore.DbContexts;
-using Suyaa.Hosting.EFCore.Dependency;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Jues.Infrastructure.EFCore
 {

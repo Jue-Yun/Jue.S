@@ -1,11 +1,5 @@
 ﻿using Jues.Infrastructure.EFCore;
 using Suyaa.Data.Dependency;
-using Suyaa.Hosting.EFCore.Dependency;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Jues.Base.Entities
 {

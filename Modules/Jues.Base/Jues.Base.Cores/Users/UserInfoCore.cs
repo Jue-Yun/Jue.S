@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Suyaa;
 using Suyaa.Data.Dependency;
 using Suyaa.Data.Helpers;
+using Suyaa.Data.Repositories.Dependency;
 using Suyaa.Hosting.Common.Exceptions;
 using Suyaa.Hosting.Core.Services;
 
