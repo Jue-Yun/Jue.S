@@ -1,18 +1,26 @@
 ﻿using Jues.Base.Entities.Files;
 using Microsoft.EntityFrameworkCore;
+using Suyaa;
 using Suyaa.Data.Dependency;
 using Suyaa.Data.Helpers;
 using Suyaa.Data.Repositories.Dependency;
 using Suyaa.Hosting.Common.Exceptions;
 using Suyaa.Hosting.Core.Services;
+using System.ComponentModel;
 
 namespace Jues.Base.Cores.Files
 {
     /// <summary>
     /// 文件存储
     /// </summary>
+    [Description(ClassDescription)]
     public sealed class FileStorageCore : DomainServiceCore
     {
+        /// <summary>
+        /// 类描述
+        /// </summary>
+        private const string ClassDescription = "文件存储";
+
         #region DI注入
 
         private readonly IRepository<FileStorage, string> _fileStorageRepository;
@@ -63,6 +71,31 @@ namespace Jues.Base.Cores.Files
             var data = await GetDataById(id);
             if (data is null) throw new UserFriendlyException($"文章分类'{id}'不存在");
             return data;
+        }
+
+        #endregion
+
+        #region 数据校验
+
+        /// <summary>
+        /// 检测文件Id是否存在
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<bool> CheckIdExists(string id)
+        {
+            return await GetQuery().Where(d => d.Id == id).AnyAsync();
+        }
+
+        /// <summary>
+        /// 检测Id是否存在, 不存在则抛出异常
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task VerifyIdExists(string id)
+        {
+            var exists = await CheckIdExists(id);
+            if (!exists) throw new UserFriendlyException("{0}Id'{1}'不存在", ClassDescription, id);
         }
 
         #endregion
