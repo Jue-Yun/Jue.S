@@ -8,8 +8,8 @@
   <ItemGroup>
     <PackageReference Include="Suyaa" Version="1.7.2312.35" />
     <PackageReference Include="Suyaa.Hosting" Version="1.11.2312.59" />
-    <PackageReference Include="Suyaa.Hosting.AutoMapper" Version="1.11.2312.66" />
-    <PackageReference Include="Suyaa.Hosting.Jwt" Version="1.11.2312.66" />
-    <PackageReference Include="Suyaa.Hosting.UnitOfWork.EfCore" Version="1.11.2312.66" />
+    <PackageReference Include="Suyaa.Hosting.AutoMapper" Version="1.11.2312.67" />
+    <PackageReference Include="Suyaa.Hosting.Jwt" Version="1.11.2312.67" />
+    <PackageReference Include="Suyaa.Hosting.UnitOfWork.EfCore" Version="1.11.2312.67" />
   </ItemGroup>
 </Project>
