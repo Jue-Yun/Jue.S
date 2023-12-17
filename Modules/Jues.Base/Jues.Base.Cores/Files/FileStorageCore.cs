@@ -38,6 +38,11 @@ namespace Jues.Base.Cores.Files
         #endregion
 
         /// <summary>
+        /// 默认仓储对象
+        /// </summary>
+        public IRepository<FileStorage, string> Repository => _fileStorageRepository;
+
+        /// <summary>
         /// 获取查询
         /// </summary>
         /// <returns></returns>
@@ -123,7 +128,7 @@ namespace Jues.Base.Cores.Files
         /// <returns></returns>
         public async Task UpdateData(FileStorage data)
         {
-            await _fileStorageRepository.UpdateAsync(data);
+            await _fileStorageRepository.UpdateAsync(data, d => d.Id == data.Id);
         }
 
         #endregion
