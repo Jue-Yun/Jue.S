@@ -19,4 +19,13 @@
     <ProjectReference Include="..\..\Common\Jues.Kernel\Jues.Kernel.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="install.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="uninstall.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
