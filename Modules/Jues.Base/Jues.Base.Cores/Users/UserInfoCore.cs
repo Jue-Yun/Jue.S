@@ -2,10 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using Suyaa;
 using Suyaa.Data.Dependency;
+using Suyaa.Data.Entities;
 using Suyaa.Data.Helpers;
 using Suyaa.Data.Repositories.Dependency;
 using Suyaa.Hosting.Common.Exceptions;
 using Suyaa.Hosting.Core.Services;
+using System.Linq.Expressions;
 
 namespace Jues.Base.Cores.Users
 {
@@ -30,6 +32,11 @@ namespace Jues.Base.Cores.Users
         }
 
         #endregion
+
+        /// <summary>
+        /// 默认仓库
+        /// </summary>
+        public IRepository<UserInfo, string> Repository => _userInfoRepository;
 
         /// <summary>
         /// 获取查询
@@ -91,7 +98,7 @@ namespace Jues.Base.Cores.Users
         /// </summary>
         /// <param name="userInfo"></param>
         /// <returns></returns>
-        public async Task InsertOne(UserInfo userInfo)
+        public async Task InsertData(UserInfo userInfo)
         {
             await _userInfoRepository.InsertAsync(userInfo);
         }
@@ -101,9 +108,20 @@ namespace Jues.Base.Cores.Users
         /// </summary>
         /// <param name="userInfo"></param>
         /// <returns></returns>
-        public async Task UpdateOne(UserInfo userInfo)
+        public async Task UpdateData(UserInfo userInfo)
         {
-            await _userInfoRepository.UpdateAsync(userInfo);
+            await _userInfoRepository.UpdateAsync(userInfo, d => d.Id == d.Id);
+        }
+
+        /// <summary>
+        /// 更新一条用户信息
+        /// </summary>
+        /// <param name="userInfo"></param>
+        /// <param name="selector"></param>
+        /// <returns></returns>
+        public async Task UpdateData(UserInfo userInfo, Expression<Func<UserInfo, object>> selector)
+        {
+            await _userInfoRepository.UpdateAsync(userInfo, selector, d => d.Id == d.Id);
         }
 
         /// <summary>

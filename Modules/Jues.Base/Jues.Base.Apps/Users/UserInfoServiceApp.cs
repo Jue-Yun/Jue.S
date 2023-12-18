@@ -56,7 +56,7 @@ namespace Jues.Base.Apps.Users
             if (userInfo.Pwd != input.OldPassword) throw new UserFriendlyException($"旧密码不正确");
             // 存储新密码
             userInfo.Pwd = input.NewPassword;
-            await _userInfoCore.UpdateOne(userInfo);
+            await _userInfoCore.UpdateData(userInfo, d => d.Pwd);
         }
     }
 }

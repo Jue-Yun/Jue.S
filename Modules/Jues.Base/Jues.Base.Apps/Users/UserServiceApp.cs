@@ -71,7 +71,7 @@ namespace Jues.Base.Apps.Users
             var userInfo = await _userInfoCore.GetUserInfoByName(userRoot);
             if (userInfo != null) throw new UserFriendlyException($"用户'{userRoot}'已经存在");
             // 添加root用户信息
-            await _userInfoCore.InsertOne(new UserInfo()
+            await _userInfoCore.InsertData(new UserInfo()
             {
                 Name = userRoot,
                 Nick = nickRoot,
